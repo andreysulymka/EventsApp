@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import participantValidator from './validations/participantValidator.js';
 import postParticipantController from './controllers/postParticipantController.js';
 import getEvents from './controllers/eventsController.js';
-import gettParticipantController from './controllers/getParticipantController.js';
+import getParticipantController from './controllers/getParticipantController.js';
 
 mongoose
     .connect(
@@ -23,6 +23,7 @@ app.use(express.json());
 app.get('/', getEvents);
 
 app.post('/:eventId/register', participantValidator, postParticipantController);
+app.get('/:eventId/participants', getParticipantController);
 
 
 app.listen(4444, (err) => {

@@ -18,10 +18,10 @@ const ParticipantModel = new mongoose.Schema({
         enum: ['Social media', 'Friends', 'Found myself'],
         required: true,
     },
-    eventId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Event',
-        required: true,
-    },
+    // eventId: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Event',
+    //     required: true,
+    // },
 });
 export default mongoose.model('Participant', ParticipantModel);
