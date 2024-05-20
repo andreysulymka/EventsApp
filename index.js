@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import participantValidator from './validations/participantValidator.js';
 import postParticipantController from './controllers/postParticipantController.js';
@@ -18,6 +19,7 @@ mongoose
     });
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.get('/', getEvents);
@@ -25,8 +27,9 @@ app.get('/', getEvents);
 app.post('/:eventId/register', participantValidator, postParticipantController);
 app.get('/:eventId/participants', getParticipantController);
 
+const PORT = process.env.PORT || 4444;
 
-app.listen(4444, (err) => {
+app.listen(PORT, (err) => {
     if (err) {
         return console.log(err);
     }
