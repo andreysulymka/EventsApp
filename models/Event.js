@@ -19,6 +19,8 @@ const EventModel = new mongoose.Schema({
     },
     participants: [
         {
+            fullName: String,
+            email: String,
         },
     ],
 });

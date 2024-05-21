@@ -6,6 +6,16 @@ import participantValidator from './validations/participantValidator.js';
 import postParticipantController from './controllers/postParticipantController.js';
 import getEvents from './controllers/eventsController.js';
 import getParticipantController from './controllers/getParticipantController.js';
+import {
+    getEventsSortedByTitle,
+    getEventsSortedByEventDate,
+    getEventsSortedByOrganizer,
+} from './controllers/sortEventsController.js';
+
+import {
+    searchParticipantsByName,
+    searchParticipantsByEmail,
+} from './controllers/searchParticipants.js';
 
 mongoose
     .connect(
@@ -26,6 +36,13 @@ app.get('/', getEvents);
 
 app.post('/:eventId/register', participantValidator, postParticipantController);
 app.get('/:eventId/participants', getParticipantController);
+
+app.get('/events/sort/title', getEventsSortedByTitle);
+app.get('/events/sort/eventDate', getEventsSortedByEventDate);
+app.get('/events/sort/organizer', getEventsSortedByOrganizer);
+
+app.get('/:eventId/participants/searchByName', searchParticipantsByName);
+app.get('/:eventId/participants/searchByEmail', searchParticipantsByEmail);
 
 const PORT = process.env.PORT || 4444;
 
