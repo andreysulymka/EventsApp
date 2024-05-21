@@ -18,9 +18,7 @@ import {
 } from './controllers/searchParticipants.js';
 
 mongoose
-    .connect(
-        'mongodb+srv://asulymka89:wwwwww@eventsappcluster.ceawd8i.mongodb.net/'
-    )
+    .connect(MONGODB_URI)
     .then(() => {
         console.log('DB ok');
     })
