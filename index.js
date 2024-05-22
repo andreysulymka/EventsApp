@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
 import participantValidator from './validations/participantValidator.js';
 import postParticipantController from './controllers/postParticipantController.js';
@@ -16,6 +17,8 @@ import {
     searchParticipantsByName,
     searchParticipantsByEmail,
 } from './controllers/searchParticipants.js';
+
+dotenv.config();
 
 mongoose
     .connect(process.env.MONGODB_URI)
